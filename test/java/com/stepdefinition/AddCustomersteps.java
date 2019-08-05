@@ -5,6 +5,7 @@ package com.stepdefinition;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -60,37 +61,90 @@ static WebDriver driver;
 //	}
 //
 //	@Then("User is generated with customer id")
-	public void user_is_generated_with_customer_id() {
-	    Assert.assertTrue(driver.findElement(By.xpath("(//td[@align='center'])[2]")).isDisplayed());
-	}
+//	public void user_is_generated_with_customer_id() {
+//	    Assert.assertTrue(driver.findElement(By.xpath("(//td[@align='center'])[2]")).isDisplayed());
+//	}
 	
-	@Given("User click on Add Tariff Plan")
-	public void user_click_on_Add_Tariff_Plan() {
-	    driver.findElement(By.xpath("//*[text()='Add Tariff Plan']")).click();
+//	@Given("User click on Add Tariff Plan")
+//	public void user_click_on_Add_Tariff_Plan() {
+//	    driver.findElement(By.xpath("//*[text()='Add Tariff Plan']")).click();
+//	}
+//
+//	@When("User fill all the fields{string},{string},{string},{string},{string},{string},{string}")
+//	public void user_fill_all_the_fields(String A, String B, String C, String D, String E, String F, String G) {
+//	    driver.findElement(By.id("rental1")).sendKeys(A);
+//	    driver.findElement(By.id("local_minutes")).sendKeys(B);
+//	    driver.findElement(By.id("inter_minutes")).sendKeys(C);
+//	    driver.findElement(By.id("sms_pack")).sendKeys(D);
+//	    driver.findElement(By.id("minutes_charges")).sendKeys(E);
+//	    driver.findElement(By.id("inter_charges")).sendKeys(F);
+//	    driver.findElement(By.id("sms_charges")).sendKeys(G);
+//	}
+//
+//	@When("User click on Submit button")
+//	public void user_click_on_Submit_button() {
+//	    driver.findElement(By.xpath("//*[@type='submit']")).click();
+//	}
+//
+//	@Then("User will be added with tariff plan")
+//	public void user_will_be_added_with_tariff_plan() {
+//		Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Congratulation you add Tariff Plan']")).isDisplayed());
+//	}
+
+//	@Given("User click on Add customer option")
+//	public void user_click_on_Add_customer_option() {
+//		driver.findElement(By.xpath("(//a[text()='Add Customer'])[1]")).click();
+//	}
+//
+//	@When("User fill all the fields.")
+//	public void user_fill_all_the_fields(DataTable dataTable) {
+//	    List<List<String>> asList = dataTable.asLists(String.class);
+//	    driver.findElement(By.xpath("//label[@for='done']")).click();
+//	    driver.findElement(By.id("fname")).sendKeys(asList.get(0).get(0));
+//	    driver.findElement(By.id("lname")).sendKeys(asList.get(0).get(1));
+//	    driver.findElement(By.id("email")).sendKeys(asList.get(0).get(2));
+//	    driver.findElement(By.name("addr")).sendKeys(asList.get(0).get(3));
+//	    driver.findElement(By.id("telephoneno")).sendKeys(asList.get(0).get(4));
+//	    
+//	    
+//	}
+//
+//	@When("User click on submit button")
+//	public void user_click_on_submit_button() {
+//		driver.findElement(By.xpath("//input[@type='submit']")).click();
+//	}
+//
+//	@Then("User is generated with customer id")
+//	public void user_is_generated_with_customer_id1() {
+//		Assert.assertTrue(driver.findElement(By.xpath("(//td[@align='center'])[2]")).isDisplayed());
+//	}
+
+	@Given("User click on Add customer option")
+	public void user_click_on_Add_customer_option() {
+		driver.findElement(By.xpath("(//a[text()='Add Customer'])[1]")).click();
 	}
 
-	@When("User fill all the fields{string},{string},{string},{string},{string},{string},{string}")
-	public void user_fill_all_the_fields(String A, String B, String C, String D, String E, String F, String G) {
-	    driver.findElement(By.id("rental1")).sendKeys(A);
-	    driver.findElement(By.id("local_minutes")).sendKeys(B);
-	    driver.findElement(By.id("inter_minutes")).sendKeys(C);
-	    driver.findElement(By.id("sms_pack")).sendKeys(D);
-	    driver.findElement(By.id("minutes_charges")).sendKeys(E);
-	    driver.findElement(By.id("inter_charges")).sendKeys(F);
-	    driver.findElement(By.id("sms_charges")).sendKeys(G);
+	@When("User fill all the fields...")
+	public void user_fill_all_the_fields(DataTable dataTable) {
+	    List<Map<String, String>> asMaps = dataTable.asMaps(String.class,String.class);
+	    driver.findElement(By.xpath("//label[@for='done']")).click();
+	    driver.findElement(By.id("fname")).sendKeys(asMaps.get(0).get("fname"));
+	    driver.findElement(By.id("lname")).sendKeys(asMaps.get(0).get("lname"));
+	    driver.findElement(By.id("email")).sendKeys(asMaps.get(0).get("email"));
+	    driver.findElement(By.name("addr")).sendKeys(asMaps.get(0).get("address"));
+	    driver.findElement(By.id("telephoneno")).sendKeys(asMaps.get(0).get("mobile"));
+	    
+	    
 	}
 
-	@When("User click on Submit button")
-	public void user_click_on_Submit_button() {
-	    driver.findElement(By.xpath("//*[@type='submit']")).click();
+	@When("User click on submit button")
+	public void user_click_on_submit_button() {
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
 	}
 
-	@Then("User will be added with tariff plan")
-	public void user_will_be_added_with_tariff_plan() {
-		Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Congratulation you add Tariff Plan']")).isDisplayed());
+	@Then("User is generated with customer id")
+	public void user_is_generated_with_customer_id1() {
+		Assert.assertTrue(driver.findElement(By.xpath("(//td[@align='center'])[2]")).isDisplayed());
 	}
-
-	
-	
 
 }
